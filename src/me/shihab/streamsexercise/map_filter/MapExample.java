@@ -1,9 +1,9 @@
-package me.shihab.streamsexercise.map;
+package me.shihab.streamsexercise.map_filter;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class MapExample_1 {
+public class MapExample {
 
 
     public static List<String> alphabet =
@@ -25,6 +25,17 @@ public class MapExample_1 {
 
     public static void main(String[] args) {
 
+
+        System.out.println("Prints the number of word with char length 6");
+        alphabet.stream()
+                .filter(s -> s.length() == 6)
+                .forEach(System.out::println);
+
+        System.out.println("Prints the number of word with char length 6 and don't start with a letter q");
+        alphabet.stream()
+                .filter(s -> (s.length() == 6 && !String.valueOf(s.charAt(0)).equals("q")))
+                        .forEach(System.out::println);
+
         System.out.println("Prints the number of character in each word");
         alphabet.stream()
                 .map(String::length)
@@ -39,7 +50,6 @@ public class MapExample_1 {
         alphabet.stream()
                 .flatMap(word -> expand(word).stream())
                 .collect(Collectors.toList()).forEach(System.out::println);
-
 
     }
 
