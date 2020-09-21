@@ -1,6 +1,9 @@
 package me.shihab.streamsexercise.flatmap;
 
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toList;
 
 public class FlatMap {
 
@@ -30,6 +33,13 @@ public class FlatMap {
             "To eat the world's due, by the grave and thee.");
 
     public static void main(String[] args) {
+
+        //Split each line of the sonnet into words and make a list of those words
+        List<String> words = sonnet.stream()
+                .flatMap(lines -> Arrays.stream(lines.split(" +").))
+                .collect(toList());
+
+        System.out.println(words);
 
     }
 }
